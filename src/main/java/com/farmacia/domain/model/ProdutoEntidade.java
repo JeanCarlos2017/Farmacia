@@ -1,4 +1,4 @@
-package com.farmacia.model;
+package com.farmacia.domain.model;
 
 import java.util.List;
 
