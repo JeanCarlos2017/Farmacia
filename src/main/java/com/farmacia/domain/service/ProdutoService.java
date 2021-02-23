@@ -10,6 +10,7 @@ import com.farmacia.domain.respository.ProdutoRepository;
 
 @Service
 public class ProdutoService {
+	
 	@Autowired
 	private ProdutoRepository produtoRepositorio;
 
@@ -28,8 +29,8 @@ public class ProdutoService {
 		}
 	}
 	
-	public void deleteProduto(ProdutoEntidade produto) {
-		produtoRepositorio.delete(produto);
+	public void deleteProduto(long id_produto) {
+		produtoRepositorio.deleteById(id_produto);
 	}
 	
 	public ProdutoRepository getProdutoRepositorio() {

@@ -53,9 +53,9 @@ public class ProdutoController {
 		return ResponseEntity.ok(produtoService.alterProduto(id_produto, produto));
 	}
 	
-	@DeleteMapping("")
-	public void delete(@Valid @RequestBody ProdutoEntidade produto) {
-		produtoService.deleteProduto(produto);
+	@DeleteMapping("/{id_produto}")
+	public void delete(@PathVariable long id_produto) {
+		produtoService.deleteProduto(id_produto);
 	}
 	
 }

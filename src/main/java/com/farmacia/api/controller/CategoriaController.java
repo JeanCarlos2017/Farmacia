@@ -55,8 +55,8 @@ public class CategoriaController {
 				body(categoriaService.alter(categoriaEntidade, id_categoria));
 	}
 	
-	@DeleteMapping
-	public void delete(@Valid @RequestBody CategoriaEntidade categoria) {
-		categoriaService.delete(categoria);
+	@DeleteMapping("/{id_categoria}")
+	public void delete(@PathVariable long id_categoria) {
+		categoriaService.delete(id_categoria);
 	}
 }
