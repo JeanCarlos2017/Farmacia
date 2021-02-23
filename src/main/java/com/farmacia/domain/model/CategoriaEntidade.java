@@ -2,14 +2,17 @@ package com.farmacia.domain.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_categoria")
@@ -20,14 +23,15 @@ public class CategoriaEntidade {
 	@NotNull @Size(min= 5, max= 100)
 	private String descricao;
 	
-	@ManyToMany
-	private List<ProdutoEntidade> categoriaList;
+	@OneToMany(mappedBy= "categoria", cascade= CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
+	private List<ProdutoEntidade> produtosList;
 
 	//toString 
 
 	@Override
 	public String toString() {
-		return "CategoriaEntidade [id=" + id + ", descricao=" + descricao + ", categoriaList=" + categoriaList + "]";
+		return "CategoriaEntidade [id=" + id + ", descricao=" + descricao + ", categoriaList=" + produtosList + "]";
 	}
 	//getters and setters 
 	public long getId() {
@@ -46,14 +50,14 @@ public class CategoriaEntidade {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-	public List<ProdutoEntidade> getCategoriaList() {
-		return categoriaList;
+	public List<ProdutoEntidade> getProdutosList() {
+		return produtosList;
 	}
-
-	public void setCategoriaList(List<ProdutoEntidade> categoriaList) {
-		this.categoriaList = categoriaList;
+	public void setProdutosList(List<ProdutoEntidade> produtosList) {
+		this.produtosList = produtosList;
 	}
+	
+	
 	
 	
 	

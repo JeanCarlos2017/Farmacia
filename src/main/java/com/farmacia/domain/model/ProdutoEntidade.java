@@ -1,15 +1,15 @@
 package com.farmacia.domain.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_produto")
@@ -23,13 +23,14 @@ public class ProdutoEntidade {
 	@NotNull @Size(min= 5, max= 20)
 	private String nome;
 	
-	@ManyToMany
-	private List<CategoriaEntidade> categoriaList;
+	@ManyToOne
+	@JsonIgnoreProperties("produtosList")
+	private CategoriaEntidade categoria;
 	//toString
 	@Override
 	public String toString() {
 		return "ProdutoEntidade [id=" + id + ", descricaoTitulo=" + descricaoTitulo + ", nome=" + nome
-				+ ", categoriaList=" + categoriaList + "]";
+				+ ", categoriaList=" + categoria + "]";
 	}
 	
 	//getters and setters 
@@ -51,12 +52,15 @@ public class ProdutoEntidade {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public List<CategoriaEntidade> getCategoriaList() {
-		return categoriaList;
+
+	public CategoriaEntidade getCategoria() {
+		return categoria;
 	}
-	public void setCategoriaList(List<CategoriaEntidade> categoriaList) {
-		this.categoriaList = categoriaList;
+
+	public void setCategoria(CategoriaEntidade categoria) {
+		this.categoria = categoria;
 	}
+	
 	
 	
 }
