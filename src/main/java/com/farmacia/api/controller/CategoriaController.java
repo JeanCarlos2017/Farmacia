@@ -1,4 +1,4 @@
-package com.farmacia.domain.controller;
+package com.farmacia.api.controller;
 
 import java.util.List;
 

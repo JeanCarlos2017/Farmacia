@@ -1,4 +1,4 @@
-package com.farmacia.api;
+package com.farmacia.api.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
