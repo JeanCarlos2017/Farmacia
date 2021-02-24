@@ -36,4 +36,10 @@ public class UsuarioService {
 			return true;
 		}
 	}
+
+	public UsuarioRepositorio getUsuarioRepositorio() {
+		return usuarioRepositorio;
+	}
+	
+	
 }
