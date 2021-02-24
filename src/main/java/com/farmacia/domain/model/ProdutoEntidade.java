@@ -26,17 +26,22 @@ public class ProdutoEntidade {
 	@ManyToOne
 	@JsonIgnoreProperties("produtosList")
 	private CategoriaEntidade categoria;
-	//toString
+	
+	@ManyToOne
+	@JsonIgnoreProperties("carrinhoProdutos")
+	private UsuarioEntidade usuario;
+	
 	@Override
 	public String toString() {
-		return "ProdutoEntidade [id=" + id + ", descricaoTitulo=" + descricaoTitulo + ", nome=" + nome
-				+ ", categoriaList=" + categoria + "]";
+		return "ProdutoEntidade [id=" + id + ", descricaoTitulo=" + descricaoTitulo + ", nome=" + nome + ", categoria="
+				+ categoria + ", usuario=" + usuario + "]";
 	}
 	
 	//getters and setters 
 	public long getId() {
 		return id;
 	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -59,6 +64,14 @@ public class ProdutoEntidade {
 
 	public void setCategoria(CategoriaEntidade categoria) {
 		this.categoria = categoria;
+	}
+
+	public UsuarioEntidade getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioEntidade usuario) {
+		this.usuario = usuario;
 	}
 	
 	
