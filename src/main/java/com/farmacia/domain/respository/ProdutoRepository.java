@@ -9,7 +9,7 @@ import com.farmacia.domain.model.ProdutoEntidade;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<ProdutoEntidade, Long>{
-	public ProdutoEntidade findByDescricaoTitulo(String titulo);
+	public List<ProdutoEntidade> findByDescricaoTituloContainingIgnoreCase(String titulo);
 	public List<ProdutoEntidade> findByNomeContainingIgnoreCase(String nome);
 
 }

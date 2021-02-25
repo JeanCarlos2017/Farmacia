@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.farmacia.domain.model.ProdutoEntidade;
@@ -39,9 +38,10 @@ public class ProdutoController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 
-	@GetMapping("/descricao/{id_produto}")
-	public ResponseEntity<ProdutoEntidade> findByDescricaoTitulo(@PathVariable String descricao) {
-		return ResponseEntity.ok(produtoService.getProdutoRepositorio().findByDescricaoTitulo(descricao));
+	@GetMapping("/descricao/{descricao}")
+	public ResponseEntity<List<ProdutoEntidade>> findByDescricaoTitulo(@PathVariable String descricao) {
+		return ResponseEntity.ok(produtoService.getProdutoRepositorio()
+									.findByDescricaoTituloContainingIgnoreCase(descricao));
 	}
 
 	@PostMapping
