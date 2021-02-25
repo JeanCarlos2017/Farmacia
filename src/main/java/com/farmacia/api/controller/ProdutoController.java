@@ -53,7 +53,8 @@ public class ProdutoController {
 	@PutMapping("/{id_produto}")
 	public ResponseEntity<ProdutoEntidade> post(@Valid  @PathVariable long id_produto,
 			@RequestBody ProdutoEntidade produto){
-		return ResponseEntity.ok(produtoService.alterProduto(id_produto, produto));
+		ProdutoEntidade prod= produtoService.alterProduto(id_produto, produto);
+		return this.valida(prod, HttpStatus.ACCEPTED);
 	}
 	
 	@DeleteMapping("/{id_produto}")
