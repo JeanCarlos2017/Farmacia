@@ -46,7 +46,8 @@ public class ProdutoController {
 
 	@PostMapping
 	public ResponseEntity<ProdutoEntidade> post(@Valid @RequestBody ProdutoEntidade produto){
-		return ResponseEntity.ok(produtoService.save(produto));
+		ProdutoEntidade prod= produtoService.save(produto);
+		return this.valida(prod, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/{id_produto}")
@@ -56,9 +57,13 @@ public class ProdutoController {
 	}
 	
 	@DeleteMapping("/{id_produto}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable long id_produto) {
-		produtoService.deleteProduto(id_produto);
+	public ResponseEntity<Void> delete(@PathVariable long id_produto) {
+		if(produtoService.deleteProduto(id_produto)) return ResponseEntity.noContent().build();
+		else return ResponseEntity.notFound().build();
 	}
 	
+	private ResponseEntity<ProdutoEntidade> valida(ProdutoEntidade produto, HttpStatus status){
+		if (produto == null) return ResponseEntity.badRequest().build();
+		else return ResponseEntity.status(status).body(produto);
+	}
 }
