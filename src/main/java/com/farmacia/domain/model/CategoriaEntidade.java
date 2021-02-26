@@ -14,10 +14,18 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
 @Table(name = "tb_categoria")
+@Getter @Setter @NoArgsConstructor @ToString
 public class CategoriaEntidade {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	//@Setter(value= AccessLevel.NONE) apenas para aprendizado :D
 	private long id;
 	
 	@NotNull @Size(min= 5, max= 100)
@@ -27,38 +35,4 @@ public class CategoriaEntidade {
 	@JsonIgnoreProperties("categoria")
 	private List<ProdutoEntidade> produtosList;
 
-	//toString 
-
-	@Override
-	public String toString() {
-		return "CategoriaEntidade [id=" + id + ", descricao=" + descricao + ", categoriaList=" + produtosList + "]";
-	}
-	//getters and setters 
-	public long getId() {
-		return id;
-	}
-
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	public List<ProdutoEntidade> getProdutosList() {
-		return produtosList;
-	}
-	public void setProdutosList(List<ProdutoEntidade> produtosList) {
-		this.produtosList = produtosList;
-	}
-	
-	
-	
-	
-	
 }
