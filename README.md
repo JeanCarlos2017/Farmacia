@@ -16,3 +16,4 @@ Caso não saiba como executar uma aplicação Spring Boot com Maven ou um execut
  4. [Maven](https://maven.apache.org/)
  
  6. [spring data jpa](https://spring.io/projects/spring-data)
+ 7. Lombok: veja como usar o Lombok clicando [aqui](https://medium.com/collabcode/projeto-lombok-escrevendo-menos-c%C3%B3digo-em-java-8fc87b379209)
