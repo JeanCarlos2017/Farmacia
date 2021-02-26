@@ -13,8 +13,14 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
 @Table(name = "tb_usuario")
+@Getter @Setter @NoArgsConstructor @ToString
 public class UsuarioEntidade {
 	@NotNull
 	private String nome;
@@ -26,37 +32,5 @@ public class UsuarioEntidade {
 	@JsonIgnoreProperties("usuario")
 	private List<ProdutoEntidade> carrinhoProdutos;
 
-	@Override
-	public String toString() {
-		return "UsuarioEntidade [nome=" + nome + ", id_usuario=" + id_usuario + ", carrinhoProdutos=" + carrinhoProdutos
-				+ "]";
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public long getId_usuario() {
-		return id_usuario;
-	}
-
-	public void setId_usuario(long id_usuario) {
-		this.id_usuario = id_usuario;
-	}
-
-	public List<ProdutoEntidade> getCarrinhoProdutos() {
-		return carrinhoProdutos;
-	}
-
-	public void setCarrinhoProdutos(List<ProdutoEntidade> carrinhoProdutos) {
-		this.carrinhoProdutos = carrinhoProdutos;
-	}
-
 	
-	
-
 }
